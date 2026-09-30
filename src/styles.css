@@ -3,3 +3,57 @@
 @import "primeicons/primeicons.css";
 
 @custom-variant dark (&:where(.dark, .dark *));
+
+/* Smooth Scrolling & Base */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar for cart and tables */
+.custom-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 999px;
+}
+.dark .custom-scroll::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+
+/* Thermal Receipt & KOT Print Media Rules */
+.only-print {
+  display: none;
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  #thermal-print-root,
+  #thermal-print-root * {
+    visibility: visible;
+  }
+
+  #thermal-print-root {
+    display: block !important;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+
+  @page {
+    margin: 2mm;
+  }
+}
